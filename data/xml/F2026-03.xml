@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<Invoice>
+   <ID>F2026-03</ID>
+   <Date>2026-03-03</Date>
+   <Seller>
+      <Name>SNCF Voyage</Name>
+      <Siret>55204944700013</Siret>
+   </Seller>
+   <Totals>
+      <HT>89.00</HT>
+      <TVA_Rate>10</TVA_Rate>
+      <TTC>97.90</TTC>
+   </Totals>
+</Invoice>

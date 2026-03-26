@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<Invoice>
+   <ID>F2026-07</ID>
+   <Date>2026-03-07</Date>
+   <Seller>
+      <Name>Telecom Error</Name>
+      <Siret>44455566600017</Siret>
+   </Seller>
+   <Totals>
+      <HT>100.00</HT>
+      <TVA_Rate>33</TVA_Rate>
+      <TTC>133.00</TTC>
+   </Totals>
+</Invoice>

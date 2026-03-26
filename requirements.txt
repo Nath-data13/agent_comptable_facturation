@@ -2,4 +2,4 @@ pdfplumber #Pour extraire le texte des factures PDF.
 mistralai
 python-dotenv
 pandas
-reportlab #Pour extraire le texte des factures PDF.
+reportlab #Pour générer les fausses factures PDF au début du projet

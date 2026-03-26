@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<Invoice>
+   <ID>F2026-02</ID>
+   <Date>2026-03-02</Date>
+   <Seller>
+      <Name>Amazon AWS</Name>
+      <Siret>83412345600012</Siret>
+   </Seller>
+   <Totals>
+      <HT>150.20</HT>
+      <TVA_Rate>20</TVA_Rate>
+      <TTC>180.24</TTC>
+   </Totals>
+</Invoice>
