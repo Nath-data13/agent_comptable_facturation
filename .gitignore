@@ -1,0 +1,32 @@
+# Environnement Virtuel
+venv_compta/
+venv/
+ENV/
+
+# Configuration et Secrets (TRÈS IMPORTANT)
+.env
+
+# Données temporaires et rapports
+# On garde les dossiers mais on ignore le contenu généré
+data/pdf/*.pdf
+data/json/*.json
+rapport/*.html
+
+# --- Documents et Brouillons ---
+*.docx
+*.doc
+*.pdf
+*.xlsx
+
+# Caches Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE (VS Code, PyCharm)
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
