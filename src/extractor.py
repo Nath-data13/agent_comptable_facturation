@@ -44,11 +44,30 @@ def extract_text_from_pdf(pdf_path):
     except Exception:
         return ""
 
+def save_as_xml(data, xml_path):
+    """Sauvegarde les données extraites par l'IA en XML (même format que le générateur)."""
+    from xml.dom import minidom
+    invoice_id = os.path.basename(xml_path).replace(".xml", "")
+    root = ET.Element("Invoice")
+    ET.SubElement(root, "ID").text = invoice_id
+    ET.SubElement(root, "Date").text = str(data.get("date", ""))
+    seller = ET.SubElement(root, "Seller")
+    ET.SubElement(seller, "Name").text = str(data.get("fournisseur", "Inconnu"))
+    ET.SubElement(seller, "Siret").text = str(data.get("siret", "Non renseigné"))
+    totals = ET.SubElement(root, "Totals")
+    ET.SubElement(totals, "HT").text = f"{float(data.get('total_ht', 0)):.2f}"
+    ET.SubElement(totals, "TVA_Rate").text = str(data.get("tva_taux", 0))
+    ET.SubElement(totals, "TTC").text = f"{float(data.get('total_ttc', 0)):.2f}"
+    xml_str = minidom.parseString(ET.tostring(root)).toprettyxml(indent="   ")
+    with open(xml_path, "w", encoding="utf-8") as f:
+        f.write(xml_str)
+
 def analyze_with_mistral(text_content):
     """Analyse intelligente via Mistral si aucun XML n'est disponible."""
     prompt = f"""
     Tu es un expert comptable. Extrais les infos de cette facture en JSON strict.
-    Champs : fournisseur, siret, date, total_ht, total_ttc, tva_taux.
+    Réponds UNIQUEMENT avec ces clés exactes en français : fournisseur, siret, date, total_ht, total_ttc, tva_taux.
+    Si une info est absente, mets null pour les nombres et "Non renseigné" pour les textes.
     Texte de la facture :
     {text_content}
     """
@@ -91,6 +110,8 @@ def process_files():
             if raw_text:
                 try:
                     data = analyze_with_mistral(raw_text)
+                    save_as_xml(data, xml_path)
+                    print(f"XML généré automatiquement : {xml_name}")
                 except Exception as e:
                     print(f"Erreur IA : {e}")
             else:
@@ -99,7 +120,7 @@ def process_files():
         if data:
             data["fichier"] = file
             results.append(data)
-            print(f"✅ Terminé : {data['fournisseur']} ({data['methode']})")
+            print(f"✅ Terminé : {data.get('fournisseur', 'Inconnu')} ({data.get('methode', '?')})")
                 
     return results
 

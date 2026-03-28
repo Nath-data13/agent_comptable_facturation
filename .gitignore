@@ -17,6 +17,7 @@ rapport/*.html
 *.doc
 *.pdf
 *.xlsx
+*.xml
 
 # Caches Python
 __pycache__/
