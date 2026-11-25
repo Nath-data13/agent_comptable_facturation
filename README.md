@@ -2,7 +2,7 @@
 
 Ce prototype est une démonstration d'un **agent intelligent** capable de simuler un flux de travail comptable complet : génération de documents, extraction de données par IA, et audit automatique de conformité.
 
-## 📂 Structure du Projet
+## Structure du Projet
 
 Organisé selon les meilleures pratiques de développement Python :
 
